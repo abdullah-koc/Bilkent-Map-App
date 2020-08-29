@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -29,10 +30,14 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = new Intent(MainActivity.this, MapActivity.class);
+
         spinner1 = findViewById(R.id.spinner1);
         spinner2 = findViewById(R.id.spinner2);
 
         buttonGo = findViewById(R.id.buttonGo);
+
+
 
         arrayListKategori = new ArrayList<>();
     //    arrayListKategori.add("Lütfen kategori seçiniz");
@@ -114,7 +119,7 @@ public class MainActivity extends AppCompatActivity{
         arrayListGenel.add("-Lütfen bina seçin");
         Collections.sort(arrayListGenel);
 
-        System.out.print(arrayListGenel.toString());
+
         arrayAdapterGenel = new ArrayAdapter<String>(getApplicationContext()
                 , R.layout.spinneritem
                 , android.R.id.text1
@@ -125,17 +130,163 @@ public class MainActivity extends AppCompatActivity{
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position == 5){
-                    buttonGo.setEnabled(true);
-                    Intent intent = new Intent(MainActivity.this, MapActivity.class);
-                    intent.putExtra("answer", "A");
-                    buttonGo.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            startActivity(intent);
-                        }
-                    });
-                }
+                buttonGo.setEnabled(true);
+                buttonGo.setOnClickListener(v -> {
+                    if(position == 1){
+                        intent.putExtra("answer", "76");
+                    }
+                    if(position == 2){
+                        intent.putExtra("answer", "77");
+                    }
+                    if(position == 3){
+                        intent.putExtra("answer", "78");
+                    }
+                    if(position == 4){
+                        intent.putExtra("answer", "9091");
+                    }
+                    if(position == 5){
+                        intent.putExtra("answer", "A");
+                    }
+                    if(position == 6){
+                        intent.putExtra("answer", "B");
+                    }
+                    if(position == 7){
+                        intent.putExtra("answer", "Lab");
+                    }
+                    if(position == 8){
+                        intent.putExtra("answer", "BilkaDogu");
+                    }
+                    if(position == 9){
+                        intent.putExtra("answer", "BilkaMerkez");
+                    }
+                    if(position == 10){
+                        intent.putExtra("answer", "BilkentStore");
+                    }
+                    if(position == 11){
+                        intent.putExtra("answer", "CBlokAmfi");
+                    }
+                    if(position == 12){
+                        intent.putExtra("answer", "CafeIn");
+                    }
+                    if(position == 13){
+                        intent.putExtra("answer", "CBDogu");
+                    }
+                    if(position == 14){
+                        intent.putExtra("answer", "CBKutuphaneAlt");
+                    }
+                    if(position == 15){
+                        intent.putExtra("answer", "CBKutuphaneUst");
+                    }
+                    if(position == 16){
+                        intent.putExtra("answer", "CBMerkez");
+                    }
+                    if(position == 17){
+                        intent.putExtra("answer", "D");
+                    }
+                    if(position == 18){
+                        intent.putExtra("answer", "YemekhaneDogu");
+                    }
+                    if(position == 19){
+                        intent.putExtra("answer", "EA");
+                    }
+                    if(position == 20){
+                        intent.putExtra("answer", "EE");
+                    }
+                    if(position == 21){
+                        intent.putExtra("answer", "ExpressCafeG");
+                    }
+                    if(position == 22){
+                        intent.putExtra("answer", "FameoEA");
+                    }
+                    if(position == 23){
+                        intent.putExtra("answer", "FieroG");
+                    }
+                    if(position == 24){
+                        intent.putExtra("answer", "Fx");
+                    }
+                    if(position == 25){
+                        intent.putExtra("answer", "G");
+                    }
+                    if(position == 26){
+                        intent.putExtra("answer", "Kutuphane");
+                    }
+                    if(position == 27){
+                        intent.putExtra("answer", "KiracSpeed");
+                    }
+                    if(position == 28){
+                        intent.putExtra("answer", "MSSF");
+                    }
+                    if(position == 29){
+                        intent.putExtra("answer", "YemekhaneMerkez");
+                    }
+                    if(position == 30){
+                        intent.putExtra("answer", "Mescid");
+                    }
+                    if(position == 31){
+                        intent.putExtra("answer", "MeteksanKirtasiye");
+                    }
+                    if(position == 32){
+                        intent.putExtra("answer", "MeteksanMarket");
+                    }
+                    if(position == 33){
+                        intent.putExtra("answer", "MithatCoruhAmfi");
+                    }
+                    if(position == 34){
+                        intent.putExtra("answer", "MozartB");
+                    }
+                    if(position == 35){
+                        intent.putExtra("answer", "MozartD");
+                    }
+                    if(position == 36){
+                        intent.putExtra("answer", "MozartEE");
+                    }
+                    if(position == 37){
+                        intent.putExtra("answer", "MozartN");
+                    }
+                    if(position == 38){
+                        intent.putExtra("answer", "N");
+                    }
+                    if(position == 39){
+                        intent.putExtra("answer", "OgrenciIsleri");
+                    }
+                    if(position == 40){
+                        intent.putExtra("answer", "Rektorluk");
+                    }
+                    if(position == 41){
+                        intent.putExtra("answer", "SASB");
+                    }
+                    if(position == 42){
+                        intent.putExtra("answer", "SaglikDogu");
+                    }
+                    if(position == 43){
+                        intent.putExtra("answer", "SaglikMerkez");
+                    }
+                    if(position == 44){
+                        intent.putExtra("answer", "Sofa");
+                    }
+                    if(position == 45){
+                        intent.putExtra("answer", "SporDogu");
+                    }
+                    if(position == 46){
+                        intent.putExtra("answer", "SporMerkez");
+                    }
+                    if(position == 47){
+                        intent.putExtra("answer", "SporYurtlar");
+                    }
+                    if(position == 48){
+                        intent.putExtra("answer", "StarbucksA");
+                    }
+                    if(position == 49){
+                        intent.putExtra("answer", "StarbucksFC");
+                    }
+                    if(position == 50){
+                        intent.putExtra("answer", "V");
+                    }
+
+
+                    startActivity(intent);
+                    finish();
+                });
             }
 
             @Override
@@ -143,6 +294,8 @@ public class MainActivity extends AppCompatActivity{
 
             }
         });
+
+
 
 /*
         arrayAdapterKategori = new ArrayAdapter<String>(getApplicationContext()
@@ -218,5 +371,7 @@ public class MainActivity extends AppCompatActivity{
 
             }
         }); */
+
+
     }
 }

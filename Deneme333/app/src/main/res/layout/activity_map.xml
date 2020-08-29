@@ -34,12 +34,6 @@
             android:textColor="#fff"
             android:textSize="24dp" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="131dp"
-            android:layout_height="104dp"
-            android:textColor="#030202" />
-
     </com.mapbox.mapboxsdk.maps.MapView>
 
 
