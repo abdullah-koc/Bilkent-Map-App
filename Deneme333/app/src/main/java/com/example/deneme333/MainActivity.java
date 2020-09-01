@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity{
         Intent intent = new Intent(MainActivity.this, MapActivity.class);
 
         spinner1 = findViewById(R.id.spinner1);
-        spinner2 = findViewById(R.id.spinner2);
 
         buttonGo = findViewById(R.id.buttonGo);
 
@@ -48,6 +47,7 @@ public class MainActivity extends AppCompatActivity{
 
         arrayListBinalar = new ArrayList<>();
      //   arrayListBinalar.add("Lütfen bina seçiniz");
+		
         arrayListBinalar.add("A Binası");
         arrayListBinalar.add("B Binası");
         arrayListBinalar.add("D Binası");
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity{
         arrayListGenel.addAll(arrayListDiger);
         arrayListGenel.addAll(arrayListKafeler);
         arrayListGenel.addAll(arrayListYurtlar);
-        arrayListGenel.add("-Lütfen bina seçin");
+        arrayListGenel.add(" ODEON");
         Collections.sort(arrayListGenel);
 
 
@@ -132,6 +132,10 @@ public class MainActivity extends AppCompatActivity{
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 buttonGo.setEnabled(true);
                 buttonGo.setOnClickListener(v -> {
+					
+					if(position == 0){
+						intent.putExtra("answer", "ODEON");
+					}
                     if(position == 1){
                         intent.putExtra("answer", "76");
                     }

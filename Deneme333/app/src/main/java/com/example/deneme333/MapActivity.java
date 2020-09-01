@@ -10,6 +10,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.mapbox.api.directions.v5.DirectionsCriteria;
@@ -62,11 +64,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private MapboxMap          mapboxMap;
     private LocationComponent  locationComponent;
     private PermissionsManager permissionsManager;
-    private Intent             intent2;
-    private Button             buttonGo2;
+    private Intent             intent2, intent3, intent4;
+    private Button             buttonGo2, locationButton;
     private String             buildingName;
     private NavigationView     navigationView;
     private static final int CHECK_FREQ = 3000;
+    private Switch switch1;
 
     private DirectionsRoute currentRoute;
     private NavigationMapRoute navigationMapRoute;
@@ -93,12 +96,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         // linking buttons
         buttonGo2 = findViewById(R.id.buttonGo2);
+        locationButton = findViewById(R.id.locationButton);
+
+        switch1 = findViewById(R.id.switch1);
 
         // linking navigationview
         navigationView = findViewById(R.id.navigationView);
 
         // get the building name from GameModeMain class
         buildingName = getIntent().getStringExtra("answer");
+
 
 
         Handler handler = new Handler();
@@ -114,6 +121,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 Point newLocation = Point.fromLngLat(locationComponent.getLastKnownLocation().getLongitude(),locationComponent.getLastKnownLocation().getLatitude());
 
 
+				if( buildingName.equals("ODEON")){
+					if( mapTracker( newLocation, 32.752106, 39.875492, 32.7519, 32.7523, 39.8752, 39.8756)){
+						return;
+					}
+				}
+				
                 if( buildingName.equals("A")){
                     if(mapTracker(newLocation, 32.749340, 39.868065, 32.7492, 32.7502, 39.8675, 39.8682)){
                         return;
@@ -166,7 +179,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 if( buildingName.equals("G")) {
                     Point destPoint = Point.fromLngLat(32.749600, 39.868700);
                     getRoute(newLocation, destPoint);
-                    if(newLocation.latitude() > 39.8682 && newLocation.latitude() < 39.8689 && newLocation.longitude() > 32.7494 && newLocation.longitude() < 32.7504) {
+                    if(newLocation.latitude() > 39.8685 && newLocation.latitude() < 39.8689 && newLocation.longitude() > 32.7494 && newLocation.longitude() < 32.7508) {
                         Toast.makeText(MapActivity.this, "You have arrived!", Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -275,13 +288,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 }
 
                 if( buildingName.equals("ExpressCafeG")) {
-                    if(mapTracker( newLocation, 32.7426955, 39.8686314, 32.7422, 32.7430, 39.8682, 39.8690)){
+                    if(mapTracker( newLocation, 32.749600, 39.868700, 32.7494, 32.7498, 39.8685, 39.8689)){
                         return;
                     }
                 }
 
                 if( buildingName.equals("FameoEA")) {
-                    if(mapTracker( newLocation, 32.7500505, 39.8713992, 32.7496, 32.7504, 39.8709, 39.8717)){
+                    if(mapTracker(newLocation, 32.75010, 39.871125, 32.7497, 32.7503, 39.8708, 39.8714)){
                         return;
                     }
                 }
@@ -443,14 +456,74 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             @Override
             public void onClick(View v) {
                 // creating new intent to go to the GameModeDiscovery activity
-           intent2 = new Intent(MapActivity.this, MainActivity.class);
+                if(buildingName.equals("FameoEA") || buildingName.equals("MozartB") || buildingName.equals("MozartD") || buildingName.equals("MozartEE")
+                        || buildingName.equals("MozartN") || buildingName.equals("StarbucksA") || buildingName.equals("StarbucksFC")
+                        || buildingName.equals("CBlokAmfi") || buildingName.equals("Lab") || buildingName.equals("FieroG")){
+                    intent2 = new Intent(MapActivity.this, UniversalSlideActivity2.class);
 
-                // sending the building name to the GameModeDiscovery Class
-               intent2.putExtra("answer",buildingName);
+                    if(buildingName.equals("FameoEA")){ intent2.putExtra("building", "FameoEA"); }
+                    if(buildingName.equals("MozartB")) { intent2.putExtra("building", "MozartB"); }
+                    if(buildingName.equals("MozartD")) { intent2.putExtra("building", "MozartD"); }
+                    if(buildingName.equals("MozartEE")) { intent2.putExtra("building", "MozartEE"); }
+                    if(buildingName.equals("MozartN")) { intent2.putExtra("building", "MozartN"); }
+                    if(buildingName.equals("StarbucksFC")) { intent2.putExtra("building", "StarbucksFC"); }
+                    if(buildingName.equals("StarbucksA")) { intent2.putExtra("building", "StarbucksA"); }
+                    if(buildingName.equals("FieroG")) { intent2.putExtra("building", "FieroG"); }
+                    if(buildingName.equals("CBlokAmfi")) { intent2.putExtra("building", "CBlokAmfi"); }
+                    if(buildingName.equals("Lab")) { intent2.putExtra("building", "Lab"); }
+                    startActivity(intent2);
+                }
+                else if(buildingName.equals("MithatCoruhAmfi") || buildingName.equals("CBKutuphaneAlt") || buildingName.equals("CBKutuphaneUst") || buildingName.equals("ExpressCafeG")) {
+                    intent3 = new Intent(MapActivity.this, UniversalSlideActivity3.class);
 
-                // start intent
-                startActivity(intent2);
-                finish();
+                    if (buildingName.equals("MithatCoruhAmfi")) { intent3.putExtra("building", "MithatCoruhAmfi"); }
+                    if (buildingName.equals("CBKutuphaneAlt") || buildingName.equals("CBKutuphaneUst")) { intent3.putExtra("building", "CBKutuphane"); }
+                    if (buildingName.equals("ExpressCafeG")) { intent3.putExtra("building", "ExpressCafeG"); }
+                    startActivity(intent3);
+                }
+                else {
+                    intent4 = new Intent(MapActivity.this, ArrivedActivity.class);
+
+					if(buildingName.equals("A")){ intent4.putExtra("building", "A"); }
+					if(buildingName.equals("B")){ intent4.putExtra("building", "B"); }
+					if(buildingName.equals("D")){ intent4.putExtra("building", "D"); }
+					if(buildingName.equals("EA")){ intent4.putExtra("building", "EA"); }
+					if(buildingName.equals("EE")){ intent4.putExtra("building", "EE"); }
+					if(buildingName.equals("Fx")){ intent4.putExtra("building", "Fx"); }
+					if(buildingName.equals("G")){ intent4.putExtra("building", "G"); }
+					if(buildingName.equals("MSSF")){ intent4.putExtra("building", "MSSF"); }
+					if(buildingName.equals("N")){ intent4.putExtra("building", "N"); }
+					if(buildingName.equals("SASB")){ intent4.putExtra("building", "SASB"); }
+					if(buildingName.equals("V")){ intent4.putExtra("building", "V"); }
+					if(buildingName.equals("76")){ intent4.putExtra("building", "76"); }
+					if(buildingName.equals("77")){ intent4.putExtra("building", "77"); }
+					if(buildingName.equals("78")){ intent4.putExtra("building", "78"); }
+					if(buildingName.equals("9091")){ intent4.putExtra("building", "9091"); }
+					if(buildingName.equals("YemekhaneMerkez")){ intent4.putExtra("building", "YemekhaneMerkez"); }
+					if(buildingName.equals("YemekhaneDogu")){ intent4.putExtra("building", "YemekhaneDogu"); }
+					if(buildingName.equals("BilkaMerkez")){ intent4.putExtra("building", "BilkaMerkez"); }
+					if(buildingName.equals("BilkaDogu")){ intent4.putExtra("building", "BilkaDogu"); }
+					if(buildingName.equals("CafeIn")){ intent4.putExtra("building", "CafeIn"); }
+					if(buildingName.equals("CBMerkez")){ intent4.putExtra("building", "CBMerkez"); }
+					if(buildingName.equals("CBDogu")){ intent4.putExtra("building", "CBDogu"); }
+					if(buildingName.equals("KiracSpeed")){ intent4.putExtra("building", "KiracSpeed"); }
+					if(buildingName.equals("Sofa")){ intent4.putExtra("building", "Sofa"); }
+					if(buildingName.equals("BilkentStore")){ intent4.putExtra("building", "BilkentStore"); }
+					if(buildingName.equals("Kutuphane")){ intent4.putExtra("building", "Kutuphane"); }
+					if(buildingName.equals("Mescid")){ intent4.putExtra("building", "Mescid"); }
+					if(buildingName.equals("MeteksanKirtasiye")){ intent4.putExtra("building", "MeteksanKirtasiye"); }
+					if(buildingName.equals("MeteksanMarket")){ intent4.putExtra("building", "MeteksanMarket"); }
+					if(buildingName.equals("SaglikMerkez")){ intent4.putExtra("building", "SaglikMerkez"); }
+                    if(buildingName.equals("SaglikDogu")){ intent4.putExtra("building", "SaglikDogu"); }
+                    if(buildingName.equals("SporMerkez")){ intent4.putExtra("building", "SporMerkez"); }
+                    if(buildingName.equals("SporDogu")){ intent4.putExtra("building", "SporDogu"); }
+                    if(buildingName.equals("SporYurtlar")){ intent4.putExtra("building", "SporYurtlar"); }
+                    if(buildingName.equals("OgrenciIsleri")){ intent4.putExtra("building", "OgrenciIsleri"); }
+					if(buildingName.equals("ODEON")){ intent4.putExtra("building", "ODEON");}
+
+					startActivity(intent4);
+                }
+
             }
         });
     }
@@ -534,11 +607,33 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             // setting the map style
 
-            mapboxMap.setStyle(getString(R.string.mapbox_style_satellite), new Style.OnStyleLoaded() {
+            mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
                 @Override
                 public void onStyleLoaded(Style style) {
                     enableLocationComponent(style);
                     addDestinationIconLayer(style);
+                }
+            });
+            switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){
+                        mapboxMap.setStyle(getString(R.string.mapbox_style_satellite), new Style.OnStyleLoaded() {
+                            @Override
+                            public void onStyleLoaded(Style style) {
+                                enableLocationComponent(style);
+                                addDestinationIconLayer(style);
+                            }
+                        });
+                    } else{
+                        mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
+                            @Override
+                            public void onStyleLoaded(Style style) {
+                                enableLocationComponent(style);
+                                addDestinationIconLayer(style);
+                            }
+                        });
+                    }
                 }
             });
         }
@@ -568,6 +663,14 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             locationComponent.activateLocationComponent(this, loadedMapStyle);
             locationComponent.setLocationComponentEnabled(true);
             locationComponent.setCameraMode(CameraMode.TRACKING);
+
+            locationButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    locationComponent.setCameraMode(CameraMode.TRACKING);
+                }
+            });
+
         }
         else {
             permissionsManager = new PermissionsManager(this);
@@ -593,6 +696,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         // adding icon layers for choosen building
         if ( source != null ) {
+
+            if(buildingName.equals("ODEON")){
+                source.setGeoJson(Feature.fromGeometry(Point.fromLngLat(32.752106, 39.875492)));
+            }
             // For building A
             if (buildingName.equals("A")) {
                 source.setGeoJson(Feature.fromGeometry(Point.fromLngLat(32.749340, 39.868065)));
@@ -672,10 +779,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 source.setGeoJson(Feature.fromGeometry(Point.fromLngLat(32.7495235, 39.8702107)));
             }
             if (buildingName.equals("ExpressCafeG")) {
-                source.setGeoJson(Feature.fromGeometry(Point.fromLngLat(32.7426955, 39.8686314)));
+                source.setGeoJson(Feature.fromGeometry(Point.fromLngLat(32.749600, 39.868700)));
             }
             if (buildingName.equals("FameoEA")) {
-                source.setGeoJson(Feature.fromGeometry(Point.fromLngLat(32.7500505, 39.8713992)));
+                source.setGeoJson(Feature.fromGeometry(Point.fromLngLat(32.75010, 39.871125)));
             }
             if (buildingName.equals("FieroG")) {
                 source.setGeoJson(Feature.fromGeometry(Point.fromLngLat(32.7497813, 39.8682817)));
@@ -696,7 +803,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 source.setGeoJson(Feature.fromGeometry(Point.fromLngLat(32.7629468, 39.872905)));
             }
             if (buildingName.equals("Sofa")) {
-                source.setGeoJson(Feature.fromGeometry(Point.fromLngLat(32.750000, 39.867100)));
+                source.setGeoJson(Feature.fromGeometry(Point.fromLngLat(32.7486883, 39.8643314)));
             }
             if (buildingName.equals("StarbucksA")) {
                 source.setGeoJson(Feature.fromGeometry(Point.fromLngLat(32.749433, 39.867985)));

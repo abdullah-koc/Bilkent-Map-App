@@ -4,37 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background3"
     tools:context=".MainActivity">
 
     <Spinner
         android:id="@+id/spinner1"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="256dp"
+        android:layout_width="363dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="328dp"
+        android:backgroundTint="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="132dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner1" />
-
     <Button
         android:id="@+id/buttonGo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="174dp"
+        android:layout_height="67dp"
         android:layout_marginBottom="105dp"
-        android:text="Button"
+        android:backgroundTint="@color/colorSoftRed"
         android:enabled="false"
+        android:text="BAŞLA!"
+        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="280dp"
+        android:layout_height="104dp"
+        android:layout_marginTop="118dp"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="Nereye Gitmek İstiyorsunuz?"
+        android:textColor="@color/colorWhite"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

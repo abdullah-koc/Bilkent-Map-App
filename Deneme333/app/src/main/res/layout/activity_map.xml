@@ -17,7 +17,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:mapbox_cameraZoom="12">
 
 
@@ -33,6 +33,42 @@
             android:text="✔"
             android:textColor="#fff"
             android:textSize="24dp" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:rotation="270"
+            android:switchMinWidth="56dp"
+            android:theme="@style/mySwitch" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="90dp"
+            android:text="Harita"
+            android:textColor="#3F51B5" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="10dp"
+            android:text="Uydu"
+            android:textColor="@color/mapbox_navigation_route_layer_congestion_red" />
+
+        <Button
+            android:id="@+id/locationButton"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="bottom|left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="28dp"
+            android:background="@drawable/ic_my_location" />
 
     </com.mapbox.mapboxsdk.maps.MapView>
 
