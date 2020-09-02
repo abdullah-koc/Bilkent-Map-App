@@ -3,8 +3,12 @@ package com.example.deneme333;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity{
 
         buttonGo = findViewById(R.id.buttonGo);
 
+        isInternetEnabled();
 
 
         arrayListKategori = new ArrayList<>();
@@ -377,5 +382,16 @@ public class MainActivity extends AppCompatActivity{
         }); */
 
 
+    }
+
+    public void isInternetEnabled() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = connectivityManager.getActiveNetworkInfo();
+        if ( netInfo != null && netInfo.isConnectedOrConnecting() ) {
+            return;
+        } else {
+            Toast.makeText(this, "BilMap'i kullanabilmek için geçerli bir internet bağlantısı gerekir.", Toast.LENGTH_LONG).show();
+            startActivity( new Intent(Settings.ACTION_SETTINGS) );
+        }
     }
 }

@@ -13,7 +13,6 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.deneme333.adapters.twostep.*;
-import com.example.deneme333.adapters.threestep.*;
 
 public class UniversalSlideActivity2 extends AppCompatActivity {
 

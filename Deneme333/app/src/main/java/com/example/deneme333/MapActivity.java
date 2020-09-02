@@ -595,7 +595,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void onMapReady(@NonNull MapboxMap mapboxMap) {
         // checking the GPS is enabled
         if( isLocationEnabled(this) == false){
-            Toast.makeText(getApplicationContext(),  "You need to enable GPS before continue.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),  "Öncelikle konumunu açmalısın.", Toast.LENGTH_LONG).show();
             startActivity( new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS) );
             finish();
         }
