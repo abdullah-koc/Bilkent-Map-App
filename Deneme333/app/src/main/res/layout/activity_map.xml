@@ -30,9 +30,9 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/round_button"
             android:gravity="center"
-            android:text="✔"
+            android:text="İLERİ"
             android:textColor="#fff"
-            android:textSize="24dp" />
+            android:textSize="16dp" />
 
         <Switch
             android:id="@+id/switch1"

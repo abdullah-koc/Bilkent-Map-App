@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity{
     private ArrayAdapter<String> arrayAdapterKategori, arrayAdapterBinalar, arrayAdapterYurtlar, arrayAdapterKafeler, arrayAdapterDiger
             , arrayAdapterGenel;
     private ArrayList<String> arrayListKategori, arrayListBinalar, arrayListYurtlar, arrayListKafeler, arrayListDiger, arrayListGenel;
-    private Button buttonGo;
+    private Button buttonGo , buttonGeriBildirim2;
 
 
     @Override
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity{
         spinner1 = findViewById(R.id.spinner1);
 
         buttonGo = findViewById(R.id.buttonGo);
+        buttonGeriBildirim2 = findViewById(R.id.buttonGeriBildirim2);
 
         isInternetEnabled();
 
@@ -131,6 +132,18 @@ public class MainActivity extends AppCompatActivity{
                 ,arrayListGenel);
         arrayAdapterGenel.setDropDownViewResource(R.layout.forspinner);
         spinner1.setAdapter(arrayAdapterGenel);
+
+        buttonGeriBildirim2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("plain/text");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "appsupport@gmail.com" });
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Görüş, öneri bildirimi");
+                intent.putExtra(Intent.EXTRA_TEXT, "");
+                startActivity(Intent.createChooser(intent, ""));
+            }
+        });
 
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -393,5 +406,13 @@ public class MainActivity extends AppCompatActivity{
             Toast.makeText(this, "BilMap'i kullanabilmek için geçerli bir internet bağlantısı gerekir.", Toast.LENGTH_LONG).show();
             startActivity( new Intent(Settings.ACTION_SETTINGS) );
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

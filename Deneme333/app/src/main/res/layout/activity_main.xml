@@ -9,9 +9,11 @@
 
     <Spinner
         android:id="@+id/spinner1"
-        android:layout_width="363dp"
+        android:layout_width="match_parent"
         android:layout_height="52dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="328dp"
+        android:layout_marginRight="20dp"
         android:backgroundTint="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -27,6 +29,7 @@
         android:enabled="false"
         android:text="BAŞLA!"
         android:textColor="@color/colorWhite"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -34,9 +37,11 @@
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="280dp"
+        android:layout_width="match_parent"
         android:layout_height="104dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="118dp"
+        android:layout_marginRight="40dp"
         android:fontFamily="sans-serif-light"
         android:gravity="center"
         android:text="Nereye Gitmek İstiyorsunuz?"
@@ -46,5 +51,18 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonGeriBildirim2"
+        android:layout_width="113dp"
+        android:layout_height="37dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="#11242B"
+        android:text="GERİBİLDİRİM"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
