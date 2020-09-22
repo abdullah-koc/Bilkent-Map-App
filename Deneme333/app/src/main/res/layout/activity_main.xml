@@ -12,11 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="328dp"
+        android:layout_marginTop="240dp"
         android:layout_marginRight="20dp"
         android:backgroundTint="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="104dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="118dp"
+        android:layout_marginTop="44dp"
         android:layout_marginRight="40dp"
         android:fontFamily="sans-serif-light"
         android:gravity="center"
@@ -48,21 +47,35 @@
         android:textColor="@color/colorWhite"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonGeriBildirim2"
-        android:layout_width="113dp"
-        android:layout_height="37dp"
+        android:layout_width="180dp"
+        android:layout_height="41dp"
         android:layout_marginBottom="5dp"
         android:backgroundTint="#11242B"
-        android:text="GERİBİLDİRİM"
+        android:text="BİZİ OYLAYIN"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewBilgi"
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
